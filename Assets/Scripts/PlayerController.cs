@@ -30,13 +30,17 @@ public class PlayerController : MonoBehaviour
         moveDirection = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
         moveDirection.Normalize();
         moveDirection *= moveSpeed;
+        moveDirection.y = yStore;
 
-        if (charController.isGrounded && Input.GetButtonDown("Jump")) {
-            moveDirection.y = jumpForce;
+        if (charController.isGrounded) {
+            if (Input.GetButtonDown("Jump")) {
+                moveDirection.y = jumpForce;
+            } else {
+                moveDirection.y = -1f;
+            }
         } else {
-            moveDirection.y = yStore;
+            moveDirection.y += Physics.gravity.y * Time.deltaTime * gravityScale;
         }
-        moveDirection.y += Physics.gravity.y * Time.deltaTime * gravityScale;
 
         charController.Move(moveDirection * Time.deltaTime);
 
@@ -51,7 +55,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 inPlaneVelocity = new Vector3(charController.velocity.x, 0f, charController.velocity.z);
         anim.SetFloat("Speed", inPlaneVelocity.magnitude);
-
         anim.SetBool("isGrounded", charController.isGrounded);
     }
 }
