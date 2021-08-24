@@ -1,9 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
-public class KillPlayer : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
+    public static CameraController instance;
+
+    public CinemachineBrain theCMBrain;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +24,5 @@ public class KillPlayer : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player") {
-            GameManager.instance.Respawn();
-        }
     }
 }

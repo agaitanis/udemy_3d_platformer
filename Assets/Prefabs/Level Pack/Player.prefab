@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5546493527941681849}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,6 +53,13 @@ MonoBehaviour:
   charController: {fileID: 5546493527941681849}
   playerModel: {fileID: 1327676605896627187}
   anim: {fileID: 3085639747460342129}
+  isKnocking: 0
+  knockBackLength: 0.5
+  knockBackPower: {x: 3, y: 1}
+  playerPieces:
+  - {fileID: 2254093653204931402}
+  - {fileID: 1189068075598699528}
+  - {fileID: 395026004404285316}
 --- !u!143 &5546493527941681849
 CharacterController:
   m_ObjectHideFlags: 0
@@ -175,5 +182,20 @@ Transform:
 --- !u!95 &3085639747460342129 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7362118178942883601, guid: 73372dc632d43aa4eb43610c78ce94b5, type: 3}
+  m_PrefabInstance: {fileID: 5546493528418629216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2254093653204931402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6030667647905637674, guid: 73372dc632d43aa4eb43610c78ce94b5, type: 3}
+  m_PrefabInstance: {fileID: 5546493528418629216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1189068075598699528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6663481812439034472, guid: 73372dc632d43aa4eb43610c78ce94b5, type: 3}
+  m_PrefabInstance: {fileID: 5546493528418629216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &395026004404285316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5296919759083411940, guid: 73372dc632d43aa4eb43610c78ce94b5, type: 3}
   m_PrefabInstance: {fileID: 5546493528418629216}
   m_PrefabAsset: {fileID: 0}
