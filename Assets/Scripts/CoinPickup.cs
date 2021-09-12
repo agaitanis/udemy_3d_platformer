@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Checkpoint : MonoBehaviour
+public class CoinPickup : MonoBehaviour
 {
-    public GameObject cpOn, cpOff;
+    public int value;
+    public GameObject coinPickupEffect;
     public int soundToPlay;
 
     // Start is called before the first frame update
@@ -22,18 +23,10 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") {
-            GameManager.instance.SetSpawnPoint(transform.position);
+            GameManager.instance.AddCoins(value);
+            Destroy(gameObject);
 
-            Checkpoint[] allCP = FindObjectsOfType<Checkpoint>();
-
-            for (int i = 0; i < allCP.Length; i++) {
-                allCP[i].cpOn.SetActive(false);
-                allCP[i].cpOff.SetActive(true);
-            }
-
-            cpOn.SetActive(true);
-            cpOff.SetActive(false);
-
+            Instantiate(coinPickupEffect, transform.position, transform.rotation);
             AudioManager.instance.PlaySFX(soundToPlay);
         }
     }

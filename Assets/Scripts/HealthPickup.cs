@@ -7,6 +7,7 @@ public class HealthPickup : MonoBehaviour
     public int healAmount;
     public bool isFullHeal;
     public GameObject heartPickupEffect;
+    public int soundToPlay;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,6 @@ public class HealthPickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") {
-            Instantiate(heartPickupEffect, transform.position, transform.rotation);
-
             if (isFullHeal) {
                 HealthManager.instance.ResetHealth();
             } else {
@@ -32,6 +31,9 @@ public class HealthPickup : MonoBehaviour
             }
 
             Destroy(gameObject);
+
+            Instantiate(heartPickupEffect, transform.position, transform.rotation);
+            AudioManager.instance.PlaySFX(soundToPlay);
         }
     }
 }

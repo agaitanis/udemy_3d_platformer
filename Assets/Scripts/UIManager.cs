@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
     public Image blackSreen;
     public float fadeSpeed;
     public bool fadeToBlack, fadeFromBlack;
+    public Text healthText;
+    public Image healthImage;
+    public Text coinText;
 
     private void Awake()
     {
