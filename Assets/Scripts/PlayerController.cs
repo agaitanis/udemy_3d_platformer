@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float gravityScale;
     public float rotateSpeed;
+    public float bounceForce;
 
     private Vector3 moveDirection;
 
@@ -99,6 +100,12 @@ public class PlayerController : MonoBehaviour
         knockBackCounter = knockBackLength;
 
         moveDirection.y = knockBackPower.y;
+        charController.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void Bounce()
+    {
+        moveDirection.y = bounceForce;
         charController.Move(moveDirection * Time.deltaTime);
     }
 }
